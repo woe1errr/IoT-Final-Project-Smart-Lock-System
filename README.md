@@ -1,7 +1,6 @@
 # IoT-Final-Project-Smart-Lock-System
 
-**NET3054 Networking and Security Final Project**
-
+## NET3054 Networking and Security Final Project
 *September 2025*
 
 ## Project Abstract:
