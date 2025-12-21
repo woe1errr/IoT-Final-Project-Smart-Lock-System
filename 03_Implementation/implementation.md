@@ -1,6 +1,6 @@
-# 4. Implementation Details
+# 3. Implementation Details
 
-## 4.1 Hardware Implementation and Circuit Connections
+## 3.1 Hardware Implementation and Circuit Connections
 
 The hardware implementation of the IoT Smart Lock System is centered around the ESP32 microcontroller, which connects to multiple sensing, authentication, alert, and actuation components. The prototyping, testing and debugging is done on a breadboard where all the components are assembled.
 
@@ -17,7 +17,7 @@ The figure below shows the circuit connection diagram of the prototype. Detailed
 
 ---
 
-## 4.2 Firmware Design and Core Modules
+## 3.2 Firmware Design and Core Modules
 
 The firmware for the ESP32 is developed using the Arduino IDE and written in C++. For better clarity, the code is divided into several modules. Besides, all authentication checks are performed locally on the ESP32 before any physical actuation occurs, ensuring that unauthorized inputs do not trigger the relay to activate the solenoid lock.
 
@@ -40,7 +40,7 @@ The core firmware modules include:
 
 ---
 
-## 4.3 Software Implementation
+## 3.3 Software Implementation
 
 The software implementation is hosted on a **Raspberry Pi**, which functions as the local IoT gateway and application server. The Raspberry Pi runs Raspberry Pi OS and hosts all networking, data processing, and visualization services.
 
@@ -56,8 +56,9 @@ For a clearer overview of the software components and their respective purposes,
 
 ---
 
-## 4.4 Prototype and Test Environment
+## 3.4 Prototype and Test Environment
 
 The system prototype is assembled using a breadboard-based hardware configuration to allow flexibility during development and testing. All testing is conducted within a controlled local network environment, where the ESP32, Raspberry Pi, and mobile phone are connected to the same Wi-Fi network.
 
 The test environment includes verification of authentication mechanisms, relay actuation behavior, buzzer alerts, MQTT message transmission, HTTP-based remote control, and real-time data visualization. Photographs of the physical prototype, wiring setup, and screenshots of Node-RED flows, MQTT message exchanges, database entries, and Grafana dashboards are captured to demonstrate correct system operation and validate end-to-end integration.
+
