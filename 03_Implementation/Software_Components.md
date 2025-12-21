@@ -1,4 +1,7 @@
-| Software Component| Purpose|
+## Software Components Used in This Project
+
+|          Component          |                                   Purpose                                   |
+| --------------------------  | --------------------------------------------------------------------------- |
 | Arduino IDE | Used to develop, compile, and upload firmware to the ESP32 microcontroller, including authentication logic, sensor handling, actuator control, and MQTT communication. |
 |Raspberry Pi OS | Operating system that runs on the Raspberry Pi, providing the execution environment for all gateway and application-layer services.|
 |Mosquitto MQTT Broker | Acts as the message broker to manage MQTT publish/subscribe communication between the ESP32 and application services.|
