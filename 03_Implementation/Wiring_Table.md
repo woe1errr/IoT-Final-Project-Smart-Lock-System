@@ -57,6 +57,14 @@
 | Pin 1        | GND            |
 | Pin 2        | GPIO 15        |
 
+## Power and Lock Connection Mapping
+
+| Component            | Negative Connection | Positive Connection |
+|---------------------|---------------------|---------------------|
+| Battery             | Relay COM           | Lock Positive       |
+| 12V Solenoid Lock   | Relay NO            | Battery Positive    |
+
+
 
 
 
