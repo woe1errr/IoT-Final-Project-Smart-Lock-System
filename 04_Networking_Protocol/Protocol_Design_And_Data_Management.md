@@ -52,5 +52,6 @@ Data visualization is implemented using Grafana, which is integrated with the In
 
 The dashboards allow users to observe system behavior through a web interface hosted on the local server. This visualization approach supports effective monitoring and validation of system functionality during testing and demonstration.
 
-## 
+---
+
 Overall, the use of MQTT for device communication, HTTP for mobile interaction, and local data storage and visualization provides a balanced and modular networking design suitable for an IoT smart lock prototype.
