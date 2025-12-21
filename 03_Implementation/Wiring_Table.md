@@ -57,7 +57,7 @@
 | Pin 1        | GND            |
 | Pin 2        | GPIO 15        |
 
-## Power and Lock Connection Mapping
+### Power and Lock Connection Mapping
 
 | Component            | Negative Connection | Positive Connection |
 |---------------------|---------------------|---------------------|
