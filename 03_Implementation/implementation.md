@@ -62,8 +62,6 @@ For a clearer overview of the software components and their respective purposes,
 
 ## 3.4 Prototype and Test Environment
 
-## 4.4 Prototype and Test Environment
-
 The system prototype is implemented using breadboard and jumper wires to allow flexibility during development, testing, and troubleshooting. The ESP32 is physically connected to the authentication components, sensors and actuator, while the Raspberry Pi serves as the local IoT gateway.
 
 All application-layer services, including the MQTT broker, Node-RED, InfluxDB, and Grafana, are deployed on the Raspberry Pi using Docker containers managed through Docker Compose. This containerized deployment simplifies service setup, ensures consistent runtime environments, and allows individual services to be started, stopped, or reconfigured independently.
@@ -71,6 +69,7 @@ All application-layer services, including the MQTT broker, Node-RED, InfluxDB, a
 Testing is conducted within a controlled local network environment, where the ESP32, Raspberry Pi, and mobile phone are connected to the same Wi-Fi network. The test environment supports validation of authentication workflows, relay actuation, buzzer alerts, MQTT message exchange, HTTP-based remote control, and real-time data visualization.
 
 Photographs of the physical prototype and wiring configuration, along with screenshots of the Docker containers in operation, Node-RED flows, MQTT message logs, database entries, and Grafana dashboards, are captured to provide evidence of correct system integration and functionality.
+
 
 
 
