@@ -9,7 +9,7 @@ This project aimed to develop a Multi-Option IoT Smart Lock System that overcome
 ### 1. [Introduction](01_Introduction/introduction.md)
 ### 2. [Design and System Architecture](02_System_Architecture/system_design.md)
 ### 3. [Implementation Details](03_Implementation)
-### 4. [Networking Protocol Design](
-### 5. [Security Implementation
+### 4. [Networking Protocol](04_Networking_Protocol)
+### 5. [Security Implementation](05_Security_Implementation)
 ### 6. [Testing and Results](06_Testing_and_Results)
 ### 7. [Conclusion](07_Conclusion_and_Future_Work/conclusion.md)
