@@ -48,12 +48,14 @@ The network layer enables data tranmission and exchange between edge devices and
 In this this case, ESP32 that serves as the client device gathers the input and sensor data and sends them to Raspberry Pi, that acts as the central IoT gateway. All communication is conducted within a local Wi-Fi network, allowing controlled data exchange between different system components. To support different communication requirements, MQTT and HTTP protocols are used.
 
 i. **MQTT Communication**
+
 The MQTT publish/subscribe protocol is used as the communication mechanism between the ESP32 and the Raspberry Pi. A Mosquitto MQTT broker is hosted on the Raspberry Pi to manage message sending between the publishers and subscribers. 
 
 - The ESP32 published door status updates, authentication events, sensor data, and abnormal situations to predefined MQTT topics like "status", "control", "lock", and "alert" respectively. At the same time, it also subscribes to another "control" topic to receive authorized remote commands.
 - Node-RED that runs on the Raspberry Pi subscribes to these topic to process incoming data, trigger control logic, and store relevant information in the database for further data visualization using Grafana dashboards.
 
 ii. **HTTP Communication**
+
 The HTTP communication is implemented to support mobile phone-based remote unlocking. An HTTP endpoint is hosted on the Raspberry Pi and managed through Node-RED, allowing external client requests to be received and processed. For the mobile interface, the iPhone Shortcuts application is used to send HTTP requests to the local server to trigger lock and unlock actions. To prevent unauthorized access, each HTTP request requires an API key in the request header that needs to be validated by the server before any control action is executed. Upon successful authentication, the server forwards the authorized control command to the ESP32 through the MQTT channel.
 
 ---
@@ -97,4 +99,5 @@ The overall data flow of the system can be summarized as follows:
 6. Security mechanisms validate all network and application-level interactions before actuation occurs.
 
 This structured data flow demonstrates complete end-to-end integration from sensing and actuation to data management and access control.
+
 
