@@ -42,15 +42,19 @@ The core firmware modules include:
 
 ## 3.3 Software Implementation
 
-The software implementation is hosted on a **Raspberry Pi**, which functions as the local IoT gateway and application server. The Raspberry Pi runs Raspberry Pi OS and hosts all networking, data processing, and visualization services.
+**Mosquitto MQTT Broker, Node-RED, iPhone Shortcuts, InfluxDB, Grafana**
+
+The software implementation is hosted on a Raspberry Pi, which functions as the local IoT gateway and application server. The Raspberry Pi runs Raspberry Pi OS and hosts all networking, data processing, and visualization services.
 
 A **Mosquitto MQTT broker** is deployed to manage publish/subscribe communication between the ESP32 and application-layer services. Username and password authentication are configured at the broker level to restrict unauthorized device connections.
 
 **Node-RED** is used as the primary application logic platform. It subscribes to MQTT topics published by the ESP32 to process door status updates and authentication events. Node-RED also implements control logic, logging workflows, and an HTTP interface for mobile phone–based remote unlocking.
 
-To support remote control, an **HTTP endpoint** is implemented in Node-RED. The mobile interface is provided through the **iPhone Shortcuts application**, which sends HTTP requests containing an API key in the request header. Each request is validated before any control command is forwarded to the ESP32 via MQTT.
+To support remote control, an HTTP endpoint is implemented in Node-RED. The mobile interface is provided through the **iPhone Shortcuts application**, which sends HTTP requests containing an API key in the request header. Each request is validated before any control command is forwarded to the ESP32 via MQTT.
 
 For data management, **InfluxDB** is used as a local time-series database to store door state changes, alert status, and access activity logs. **Grafana** is integrated with InfluxDB to provide real-time and historical visualization of system activity through a web-based dashboard with different panels.
+
+Lastly to simplify deployment and improve service isolation, the MQTT broker, Node-RED, InfluxDB, and Grafana are deployed using **Docker** containers on the Raspberry Pi. Docker Compose is used to manage and orchestrate these services, allowing consistent configuration, simplified startup, and ease of maintenance. Containerization ensures that each service runs in an isolated environment while communicating over the local network.
 
 For a clearer overview of the software components and their respective purposes, refer to the [Software Components Table](./Software_Components.md)
 
@@ -58,7 +62,15 @@ For a clearer overview of the software components and their respective purposes,
 
 ## 3.4 Prototype and Test Environment
 
-The system prototype is assembled using a breadboard-based hardware configuration to allow flexibility during development and testing. All testing is conducted within a controlled local network environment, where the ESP32, Raspberry Pi, and mobile phone are connected to the same Wi-Fi network.
+## 4.4 Prototype and Test Environment
 
-The test environment includes verification of authentication mechanisms, relay actuation behavior, buzzer alerts, MQTT message transmission, HTTP-based remote control, and real-time data visualization. Photographs of the physical prototype, wiring setup, and screenshots of Node-RED flows, MQTT message exchanges, database entries, and Grafana dashboards are captured to demonstrate correct system operation and validate end-to-end integration.
+The system prototype is implemented using breadboard and jumper wires to allow flexibility during development, testing, and troubleshooting. The ESP32 is physically connected to the authentication components, sensors and actuator, while the Raspberry Pi serves as the local IoT gateway.
+
+All application-layer services, including the MQTT broker, Node-RED, InfluxDB, and Grafana, are deployed on the Raspberry Pi using Docker containers managed through Docker Compose. This containerized deployment simplifies service setup, ensures consistent runtime environments, and allows individual services to be started, stopped, or reconfigured independently.
+
+Testing is conducted within a controlled local network environment, where the ESP32, Raspberry Pi, and mobile phone are connected to the same Wi-Fi network. The test environment supports validation of authentication workflows, relay actuation, buzzer alerts, MQTT message exchange, HTTP-based remote control, and real-time data visualization.
+
+Photographs of the physical prototype and wiring configuration, along with screenshots of the Docker containers in operation, Node-RED flows, MQTT message logs, database entries, and Grafana dashboards, are captured to provide evidence of correct system integration and functionality.
+
+
 
