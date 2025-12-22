@@ -46,9 +46,9 @@
 
 | Component Pin | ESP32 GPIO Pin |
 |--------------|----------------|
-| Signal       | –              |
-| VCC          | –              |
-| GND          | –              |
+| Signal       | D12         |
+| VCC          | 3.3V            |
+| GND          | GND           |
 
 ### Reed Sensor
 
