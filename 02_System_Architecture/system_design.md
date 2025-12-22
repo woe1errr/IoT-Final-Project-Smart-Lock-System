@@ -100,4 +100,5 @@ The overall data flow of the system can be summarized as follows:
 
 This structured data flow demonstrates complete end-to-end integration from sensing and actuation to data management and access control.
 
+[Section 3: Implementation](/03_Implementation/implementation.md)
 
