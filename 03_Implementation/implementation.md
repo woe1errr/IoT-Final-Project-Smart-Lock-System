@@ -13,7 +13,10 @@ The **solenoid door lock** serves as the primary physical locking mechanism. The
 For a clearer overview of the hardware components and their respective purposes, refer to the [Hardware Components Table](./Hardware_Components.md).
 
 The figure below shows the circuit connection diagram of the prototype. Detailed wiring information can be found in the [Wiring Table](./Wiring_Table.md).
-<img width="3000" height="2919" alt="Circuit_Connection" src="https://github.com/user-attachments/assets/dc0dce74-f5f1-45dc-a3ad-ec636e183c21" />
+
+
+<img width="3000" height="2919" alt="Circuit_Connection" src= "https://github.com/woe1errr/IoT-Final-Project-Smart-Lock-System/blob/main/Diagram/Circuit_Connection_Diagram.png">
+Diagram 1: Circuit Connection Diagram
 
 ---
 
@@ -73,4 +76,5 @@ Photographs of the physical prototype and wiring configuration, along with scree
 ---
 
 [Section 4: Networking Protocol](/04_Networking_Protocol/Protocol_Design_And_Data_Management.md)
+
 
