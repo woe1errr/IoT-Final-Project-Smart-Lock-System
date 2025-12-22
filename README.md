@@ -13,3 +13,5 @@ This project aimed to develop a Multi-Option IoT Smart Lock System that overcome
 ### 5. [Security Implementation](05_Security_Implementation)
 ### 6. [Testing and Results](06_Testing_and_Results)
 ### 7. [Conclusion](07_Conclusion_and_Future_Work/conclusion.md)
+
+Click here to check out the full report in PDF: [IoT Final Project - Lock System Report]()
