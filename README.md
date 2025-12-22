@@ -8,10 +8,10 @@ This project aimed to develop a Multi-Option IoT Smart Lock System that overcome
 ## Documentation Contents
 ### 1. [Introduction](01_Introduction/introduction.md)
 ### 2. [Design and System Architecture](02_System_Architecture/system_design.md)
-### 3. [Implementation Details](03_Implementation)
-### 4. [Networking Protocol](04_Networking_Protocol)
-### 5. [Security Implementation](05_Security_Implementation)
-### 6. [Testing and Results](06_Testing_and_Results)
+### 3. [Implementation Details](03_Implementation/implementation.md)
+### 4. [Networking Protocol](04_Networking_Protocol/Protocol_Design_And_Data_Management.md)
+### 5. [Security Implementation](05_Security_Implementation/security.md)
+### 6. [Testing and Results](06_Testing_and_Results/testing.md)
 ### 7. [Conclusion](07_Conclusion_and_Future_Work/conclusion.md)
 
 Click here to check out the full report in PDF: [IoT Final Project - Lock System Report]()
