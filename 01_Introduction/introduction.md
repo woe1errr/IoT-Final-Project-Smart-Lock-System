@@ -31,7 +31,8 @@ Upon completion of the project, the following outcomes are expected:
 
 ---
 
-_[Section 2: System Architecture](02_System_Architecture/system_design.md)_
+_[Section 2: System Architecture](/02_System_Architecture/system_design.md)_
+
 
 
 
