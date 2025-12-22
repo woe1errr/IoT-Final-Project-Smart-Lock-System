@@ -42,11 +42,11 @@
 | C2           | GPIO 32        |
 | C3           | GPIO 13        |
 
-### Buzzer
+### Passive Buzzer
 
 | Component Pin | ESP32 GPIO Pin |
 |--------------|----------------|
-| Signal       | D12         |
+| Signal       | D16         |
 | VCC          | 3.3V            |
 | GND          | GND           |
 
