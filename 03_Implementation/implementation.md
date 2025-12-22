@@ -16,7 +16,8 @@ The figure below shows the circuit connection diagram of the prototype. Detailed
 
 
 <img width="3000" height="2919" alt="Circuit_Connection" src= "https://github.com/woe1errr/IoT-Final-Project-Smart-Lock-System/blob/main/Diagram/Circuit_Connection_Diagram.png">
-Diagram 1: Circuit Connection Diagram
+
+*Diagram 1: Circuit Connection Diagram*
 
 ---
 
@@ -76,5 +77,6 @@ Photographs of the physical prototype and wiring configuration, along with scree
 ---
 
 [Section 4: Networking Protocol](/04_Networking_Protocol/Protocol_Design_And_Data_Management.md)
+
 
 
