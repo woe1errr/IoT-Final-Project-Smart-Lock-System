@@ -8,6 +8,7 @@ In this case, access control systems may be improved with the development of Int
 
 Due to these constraints, this project aims to create an IoT-driven smart lock system, which would allow the integration of multiple ways to unlock the door and real-time monitoring and user alerting. The desired system will enhance security, flexibility, and convenience through hardware-based authentication and networked data management as well as security measures.
 
+---
 
 ## 1.2 Project Objectives
 
@@ -18,6 +19,8 @@ The primary objectives of this project are as follows:
 4. To enable real-time monitoring, logging, and visualization of lock status and access events using a local server and database.
 5. To incorporate security mechanism to prevent unauthorized access and ensure controlled device communication.
 
+---
+
 ## 1.3 Expected Outcomes
 
 Upon completion of the project, the following outcomes are expected:
@@ -26,5 +29,8 @@ Upon completion of the project, the following outcomes are expected:
 - Real-time monitoring, logging, and visualization of door lock status and access activities through a Grafana dashboard.
 - Application of basic security measures, such as authentication and access control, to restrict unauthorized device interactions.
 
-### [Section 2: System Architecture](./system_design.md)
+---
+
+_[Section 2: System Architecture](./system_design.md)_
+
 
