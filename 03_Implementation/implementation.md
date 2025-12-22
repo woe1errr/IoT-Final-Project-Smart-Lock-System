@@ -70,6 +70,7 @@ Testing is conducted within a controlled local network environment, where the ES
 
 Photographs of the physical prototype and wiring configuration, along with screenshots of the Docker containers in operation, Node-RED flows, MQTT message logs, database entries, and Grafana dashboards, are captured to provide evidence of correct system integration and functionality.
 
+---
 
-
+[Section 4: Networking Protocol](/04_Networking_Protocol/Protocol_Design_And_Data_Management.md)
 
