@@ -14,3 +14,7 @@
 |Breadboard| To facilitate circuit connections during implementation|
 |I2C LCD Display | Displays lock status messages, user prompts, and authentication feedback |
 |Magnetic Reed Sensor (Reed Switch) |Detects the door’s open or closed state for real-time monitoring and escalation logic| 
+
+---
+
+Click here to return to [Implementation Details Page](implementation.md)
