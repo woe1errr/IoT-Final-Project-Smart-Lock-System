@@ -64,7 +64,7 @@
 | Battery             | Relay COM           | Lock Positive       |
 | 12V Solenoid Lock   | Relay NO            | Battery Positive    |
 
-
+Click here to return to [Implementation Details Page](implementation.md)
 
 
 
