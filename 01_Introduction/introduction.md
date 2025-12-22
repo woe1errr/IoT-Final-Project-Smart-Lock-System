@@ -26,4 +26,5 @@ Upon completion of the project, the following outcomes are expected:
 - Real-time monitoring, logging, and visualization of door lock status and access activities through a Grafana dashboard.
 - Application of basic security measures, such as authentication and access control, to restrict unauthorized device interactions.
 
-[Section 2: System Architecture](./system_design.md)
+### [Section 2: System Architecture](./system_design.md)
+
