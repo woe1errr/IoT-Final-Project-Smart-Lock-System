@@ -10,7 +10,6 @@ Advancements in Internet of Things (IoT) technologies provide an opportunity to 
 
 To overcome these challenges, this project aims to develop an IoT-driven smart lock system that integrates multiple authentication methods, including hardware-based access mechanisms and remote control, with real-time monitoring and user alerting. The proposed system is designed to improve security, flexibility, and convenience through the combination of embedded hardware, networked data management, and basic security controls.
 
----
 
 ## 1.2 Project Objectives
 
@@ -21,7 +20,6 @@ The primary objectives of this project are as follows:
 4. To enable real-time monitoring, logging, and visualization of lock status and access events using a local server and database.
 5. To incorporate security mechanism to prevent unauthorized access and ensure controlled device communication.
 
----
 
 ## 1.3 Expected Outcomes
 
@@ -34,6 +32,7 @@ Upon completion of the project, the following outcomes are expected:
 ---
 
 _[Section 2: System Architecture](/02_System_Architecture/system_design.md)_
+
 
 
 
