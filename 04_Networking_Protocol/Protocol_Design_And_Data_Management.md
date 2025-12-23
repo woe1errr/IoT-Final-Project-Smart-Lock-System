@@ -22,6 +22,13 @@ All MQTT topics in this implementation are configured using Quality of Service (
 
 Node-RED subscribes to these topics and performs payload validation, data normalization, and routing. Incoming messages are transformed into a consistent schema and stored in InfluxDB as time-series records. This publish/subscribe approach decouples the embedded device from application logic, enabling scalable and maintainable system behavior.
 
+The figure below is an example of the MQTT node configuration on Node-RED.
+![MQTT_Node_Example](https://github.com/user-attachments/assets/5fad8d42-c026-4215-85e7-9733785c763c)
+
+_Figure: MQTT In Node-RED Node Example_
+
+
+
 ---
 
 ## 4.3 HTTP-Based Mobile Control via Node-RED
@@ -31,6 +38,12 @@ Node-RED subscribes to these topics and performs payload validation, data normal
 HTTP communication is implemented to support mobile phone–based remote unlocking. HTTP endpoints are hosted on the Raspberry Pi and managed through Node-RED, allowing control requests to be received from external client devices.
 
 The mobile interface is implemented using the iPhone Shortcuts application, which sends HTTP requests to the local server when a remote unlock or get status action is triggered. All HTTP requests require a Bearer API key for authentication. Authorized GET requests retrieve the latest door state from InfluxDB, while authorized POST requests trigger lock or unlock commands. Validated control actions are forwarded internally to the ESP32 using MQTT, ensuring that device-level communication remains isolated from external clients.
+
+The figure below is the shortcut logic used implemented
+
+![Shortcut_App_Logic](https://github.com/user-attachments/assets/5877e6ec-9c1d-42d8-b69c-98e580cf2174)
+
+_Figure: Shortcut App Logic_
 
 ---
 
@@ -67,6 +80,8 @@ The dashboards allow users to observe system behavior through a web interface ho
 ## 4.6 Node-RED Flows
 
 ![Node_RED_Flow](https://github.com/user-attachments/assets/968b0b18-ba76-4992-9897-acaabe7f7fa1)
+
+_Figure: Implemented Node-RED Flow_ 
 
 | Flow Category        | Source                | Protocol     | Endpoint / Topic     | Node-RED Role                  | Data Handling / Outcome                                               |
 | -------------------- | --------------------- | ------------ | -------------------- | ------------------------------ | --------------------------------------------------------------------- |
