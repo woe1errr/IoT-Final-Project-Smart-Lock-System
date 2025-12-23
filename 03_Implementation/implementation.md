@@ -472,15 +472,17 @@ void loop() {
 }
 ```
 
+The full firmware code can be found at [IoT_Final_Project_ESP32_Firmware.ino](/IoT_Final_Project_ESP32_Firmware.ino)  
+
 ---
 
 ## 3.3 Software Implementation
 
-**Mosquitto MQTT Broker, Node-RED, iPhone Shortcuts, InfluxDB, Grafana**
+**Mosquitto MQTT Broker, Node-RED, iPhone Shortcuts, InfluxDB, Grafana, Docker**
 
 The software implementation is hosted on a Raspberry Pi, which functions as the local IoT gateway and application server. The Raspberry Pi runs Raspberry Pi OS and hosts all networking, data processing, and visualization services.
 
-A **Mosquitto MQTT broker** is deployed to manage publish/subscribe communication between the ESP32 and application-layer services. Username and password authentication are configured at the broker level to restrict unauthorized device connections.
+A **Mosquitto MQTT broker** is deployed to manage publish/subscribe communication between the ESP32 and application-layer services. Username and password authentication are configured at the broker level to restrict unauthorized device connections. **MQTTX** is used as a debugging and testing tool during development to manually publish and subscribe to MQTT topics.
 
 **Node-RED** is used as the primary application logic platform. It subscribes to MQTT topics published by the ESP32 to process door status updates and authentication events. Node-RED also implements control logic, logging workflows, and an HTTP interface for mobile phone–based remote unlocking.
 
@@ -488,7 +490,8 @@ To support remote control, an HTTP endpoint is implemented in Node-RED. The mobi
 
 For data management, **InfluxDB** is used as a local time-series database to store door state changes, alert status, and access activity logs. **Grafana** is integrated with InfluxDB to provide real-time and historical visualization of system activity through a web-based dashboard with different panels.
 
-Lastly to simplify deployment and improve service isolation, the MQTT broker, Node-RED, InfluxDB, and Grafana are deployed using **Docker** containers on the Raspberry Pi. Docker Compose is used to manage and orchestrate these services, allowing consistent configuration, simplified startup, and ease of maintenance. Containerization ensures that each service runs in an isolated environment while communicating over the local network.
+Lastly to simplify deployment and improve service isolation, **Docker** is used to define and manage the multi-container application stack, including the MQTT broker, Node-RED, InfluxDB, and Grafana. Each service is defined with its respective image, ports, volumes, and network configuration, enabling consistent startup and inter-service communication on the Raspberry Pi. Containerization ensures that each service runs in an isolated environment while communicating over the local network. The Docker Compose configuration file is available at  [IoT_Final_Project_Docker_Compose.yml](/IoT_Final_Project_Docker_Compose.yml).
+
 
 For a clearer overview of the software components and their respective purposes, refer to the [Software Components Table](./Software_Components.md)
 
@@ -507,6 +510,7 @@ Photographs of the physical prototype and wiring configuration, along with scree
 ---
 
 [Section 4: Networking Protocol](/04_Networking_Protocol/Protocol_Design_And_Data_Management.md)
+
 
 
 
