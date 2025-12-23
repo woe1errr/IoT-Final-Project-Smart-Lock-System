@@ -1,11 +1,11 @@
-﻿# Testing and Results
+﻿# 6. Testing and Results
 ---
 
 In this section, the results obtained from the testing procedures on the IoT Smart Lock System are presented, and the system's performance and limitations are discussed.
 
 ---
 
-## 7.1 Testing Procedure
+## 6.1 Testing Procedure
 
 System testing was conducted in a controlled local network environment to verify correct operation of authentication mechanisms, network communication, data logging, visualization, and security controls. The tests focused on validating end-to-end data flow from the ESP32 device to the application layer, as well as ensuring unauthorized access attempts were correctly blocked.
 
@@ -13,7 +13,7 @@ The following test cases in Section 7.2 are executed to test system behaviour.
 
 ---
 
-## 7.2 Test Case Summary and Results
+## 6.2 Test Case Summary and Results
 
 | **Test ID** | **Test Scenario**                 | **Input / Action**                | **Expected Outcome**               | **Observed Result**                       |
 | ----------- | --------------------------------- | --------------------------------- | ---------------------------------- | ----------------------------------------- |
@@ -46,7 +46,7 @@ In conclusion, the results indicate that all tested functional and security requ
 
 ---
 
-## 7.3 System Performance Discussion
+## 6.3 System Performance Discussion
 
 The system demonstrated stable and responsive behavior during testing:
 
@@ -61,7 +61,7 @@ The system demonstrated stable and responsive behavior during testing:
   
 ---
 
-## 7.4 Limitations
+## 6.4 Limitations
 Despite the successed functionalities, several limitations were identified in this system:
 
 1. No Transport-Level Encryption:
@@ -77,5 +77,6 @@ Alert generation is rule-based and does not include advanced intrusion detection
 Temporary network disruptions may delay data updates or remote control actions.
 
 [Section 7: Conclusion and Future Work](/07_Conclusion_and_Future_Work/conclusion.md)
+
 
 
