@@ -17,7 +17,11 @@ The figure below shows the circuit connection diagram of the prototype. Detailed
 
 <img width="3000" height="2919" alt="Circuit_Connection" src= "https://github.com/woe1errr/IoT-Final-Project-Smart-Lock-System/blob/main/Diagram/Circuit_Connection_Diagram.png">
 
-*Diagram 1: Circuit Connection Diagram*
+*Diagram 2: Circuit Connection Diagram*
+
+![Actual_Prototype_Wiring](https://github.com/user-attachments/assets/3ba76d14-efad-4033-8d04-71a0bbfd1ebe)
+
+*Figure 1: Actual Prototype Wiring Image*
 
 ---
 
@@ -31,13 +35,13 @@ The core firmware modules include:
   This module handles RFID tag verification and keypad-based PIN validation. Only the tag with the correct predefined UID and authenticated inputs are allowed to move on with the lock unlock logic.
 
 - **Sensor Monitoring Module:**
-  The magnetic reed switch constantly monitors the door's open or closed states and generates corresponding status updates
+  The magnetic reed switch constantly monitors the door's open or closed states and generates corresponding status updates.
 
 - **Actuation Module:**  
   Controls the relay module to unlock or relock the solenoid door lock based on the authentication results and time escalation logic.
 
 - **Buzzer Control Module:**  
-  To generate audible alerts for repeated failed PIN attempts, and door open escalation events.
+  To generate audible alerts to attract user's attention when the door being open exceeds the allowed time threshold.
 
 - **Communication Module:**  
   Manages Wi-Fi connectivity, MQTT client initialization, message publishing for door status and access events, and subscription to control topics for authorized remote commands.
@@ -77,6 +81,7 @@ Photographs of the physical prototype and wiring configuration, along with scree
 ---
 
 [Section 4: Networking Protocol](/04_Networking_Protocol/Protocol_Design_And_Data_Management.md)
+
 
 
 
