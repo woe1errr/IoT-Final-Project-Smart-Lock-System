@@ -1,4 +1,6 @@
-﻿# Security Mechanism
+_[Click here to return to Section 4: Networking Protocol](/04_Networking_Protocol/Protocol_Design_And_Data_Management.md)_
+ 
+ # Security Mechanism
 
 To ensure the confidentiality, integrity, and controlled access of the IoT Smart Lock System, three security mechanisms were implemented across the application, network, and device levels. .
 
