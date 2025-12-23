@@ -39,7 +39,7 @@ HTTP communication is implemented to support mobile phone–based remote unlocki
 
 The mobile interface is implemented using the iPhone Shortcuts application, which sends HTTP requests to the local server when a remote unlock or get status action is triggered. All HTTP requests require a Bearer API key for authentication. Authorized GET requests retrieve the latest door state from InfluxDB, while authorized POST requests trigger lock or unlock commands. Validated control actions are forwarded internally to the ESP32 using MQTT, ensuring that device-level communication remains isolated from external clients.
 
-The figure below is the shortcut logic used implemented
+The figure below is the shortcut logic implemented in the Shortcut Application.
 
 ![Shortcut_App_Logic](https://github.com/user-attachments/assets/5877e6ec-9c1d-42d8-b69c-98e580cf2174)
 
