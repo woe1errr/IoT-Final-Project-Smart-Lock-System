@@ -10,6 +10,7 @@
 |Grafana | Web data visualization tool used to display real-time and historical data such as door state changes and access activities through dashboards.|
 |iPhone Shortcuts App| Acts as the mobile client interface, allowing users to trigger remote unlock actions by sending HTTP requests with API key authentication headers.|
 |Docker| To containerize and deploy application layer services such as the MQTT broker, Node-RED, InfluxDB, and Grafana on the Raspberry Pi for consistent configuration, simplified service management, and isolated execution environments.|
+|MQTTX | Used for testing and debugging MQTT communication by manually publishing and subscribing to topics.|
 
 --- 
 
