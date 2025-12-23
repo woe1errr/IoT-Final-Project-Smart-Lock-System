@@ -21,6 +21,5 @@ This project aimed to develop a Multi-Option IoT Smart Lock System that overcome
 ### 4. [Node-RED Flow JSON File](IoT_Final_Project_NodeRED_Flow.json)
 ### 5. [Example of Environment File](IoT_Final_Project_env.example)
 ### 6. [Example of Mosquitto Configuration File](IoT_Final_Project_mosquitto.conf)
-### 5.
-### 6. 
+
 Click here to check out the full report in PDF: [IoT Final Project - Lock System Report]()
