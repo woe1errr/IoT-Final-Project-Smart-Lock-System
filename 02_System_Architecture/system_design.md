@@ -5,7 +5,7 @@
 The proposed Smart Lock System is based on a four-layer IoT architecture, namely the Perception Layer, Network Layer, Application Layer, and Security Layer. 
 The system integrates physical sensing and actuation components with network communication, local data processing, and access control mechanisms. A full system architecture diagram illustrates the interaction between hardware components, communication protocols, data paths, and security features across all four layers. The diagram below is the overview of our IoT System Architecture Diagram
 
-<img width="921" height="1012" alt="IoT System Architecture-System Architecture drawio" src="https://github.com/user-attachments/assets/0068239a-7611-4fee-ad1e-b20e839807e0" />
+<img width="920" height="942" alt="IoT_System_Architecture_Diagram" src="https://github.com/user-attachments/assets/0172fcc8-9963-4759-a7e6-382e891711a2" />
 
 *Diagram 1: IoT System Architecture Diagram*
 
@@ -104,5 +104,6 @@ The overall data flow of the system can be summarized as follows:
 This structured data flow demonstrates complete end-to-end integration from sensing and actuation to data management and access control.
 
 [Section 3: Implementation](/03_Implementation/implementation.md)
+
 
 
