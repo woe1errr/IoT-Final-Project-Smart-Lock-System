@@ -1,4 +1,4 @@
-_[Click here to return to Section 4: Networking Protocol](/04_Networking_Protocol/Protocol_Design_And_Data_Management.md)_
+_[Click here to return to Section 3: Implementation](/03_Implementation/implementation.md)_
 
 # 4. Networking Protocol Design and Data Management
 
@@ -25,7 +25,7 @@ Node-RED subscribes to these topics and performs payload validation, data normal
 The figure below is an example of the MQTT node configuration on Node-RED.
 ![MQTT_Node_Example](https://github.com/user-attachments/assets/5fad8d42-c026-4215-85e7-9733785c763c)
 
-_Figure: MQTT In Node-RED Node Example_
+_Figure 2: MQTT In Node-RED Node Example_
 
 
 
@@ -43,7 +43,7 @@ The figure below is the shortcut logic used implemented
 
 ![Shortcut_App_Logic](https://github.com/user-attachments/assets/5877e6ec-9c1d-42d8-b69c-98e580cf2174)
 
-_Figure: Shortcut App Logic_
+_Figure 3: Shortcut App Logic_
 
 ---
 
@@ -68,7 +68,7 @@ Door status updates, authentication events, access activity logs, and security a
 
 ![Grafana_Dashboard](https://github.com/user-attachments/assets/5a0be885-ab7e-4776-bc0d-556e17150cae)
 
-*Figure: Grafana Dashboard*
+*Figure 4: Grafana Dashboard*
 
 
 Data visualization is implemented using Grafana, which is integrated with the InfluxDB database. Grafana dashboards provide real-time and historical visualization of system activity, including door and lock state changes, access activity logs, and security alert logs.  
@@ -81,7 +81,7 @@ The dashboards allow users to observe system behavior through a web interface ho
 
 ![Node_RED_Flow](https://github.com/user-attachments/assets/968b0b18-ba76-4992-9897-acaabe7f7fa1)
 
-_Figure: Implemented Node-RED Flow_ 
+_Figure 5: Implemented Node-RED Flow_ 
 
 | Flow Category        | Source                | Protocol     | Endpoint / Topic     | Node-RED Role                  | Data Handling / Outcome                                               |
 | -------------------- | --------------------- | ------------ | -------------------- | ------------------------------ | --------------------------------------------------------------------- |
