@@ -23,5 +23,5 @@ This project aimed to develop a Multi-Option IoT Smart Lock System that overcome
 ### 6. [Example of Mosquitto Configuration File](IoT_Final_Project_mosquitto.conf)
 
 ## Presentation & Demonstration Video Youtube Link
-https://youtu.be/Lt9OAkoFmC0
+**https://youtu.be/Lt9OAkoFmC0**
 
