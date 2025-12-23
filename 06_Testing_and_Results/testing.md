@@ -25,26 +25,70 @@ The following test cases in Section 7.2 are executed to test system behaviour.
 | TC-04       | Valid RFID authentication         | Scan registered RFID card         | Door unlocks and status updated    | Door unlocked successfully                |
 | TC-05       | Invalid RFID authentication       | Scan unregistered RFID card       | Access denied                      | Access denied; no state change            |
 | TC-06       | MQTT status publish               | ESP32 publishes door status       | Message received by Node-RED       | Message received and processed, visualized in Grafana           |
-| TC-07       | MQTT authentication failure       | Connect with invalid credentials  | Broker rejects connection          | Connection rejected                       |
-| TC-08       | HTTP control with valid API key   | HTTP request with correct API key | Command accepted and executed      | Lock controlled successfully              |
-| TC-09       | HTTP control without API key      | HTTP request without API key      | Request rejected                   | Request rejected                          |
-| TC-10       | HTTP control with invalid API key | HTTP request with wrong API key   | Request rejected                   | Request rejected                          |
-| TC-11       | Data logging                      | Door open/close events            | Data stored in database            | Data visible in dashboard                 |
-| TC-12       | Real-time visualization           | Change door/lock state            | Dashboard updates in real time     | Dashboard updated correctly               |
+| TC-07       | HTTP control with valid API key   | HTTP request with correct API key | Command accepted and executed      | Lock controlled successfully              |
+| TC-08       | HTTP control with invalid API key | HTTP request with wrong API key   | Request rejected                   | Request rejected                          |
+| TC-09       | Data logging                      | Door open/close events            | Data stored in database            | Data visible in dashboard                 |
+| TC-10       | Real-time visualization           | Change door/lock state            | Dashboard updates in real time     | Dashboard updated correctly               |
 
 
 **Test Case Evidences:**
-****Relevant Test Cases:** TC-01, TC-02, TC-03, TC-04, TC-05** 
-From Serial Monitor
+- **TC-01**
+  
+  ![TC-01](https://github.com/user-attachments/assets/e880777e-1802-4aa9-98f2-5a58f8b42430)
+  Figure: Evidence for Test Case 1
 
-From Phone or NodeRED
+- **TC-02**
+  
+![TC-02](https://github.com/user-attachments/assets/453ecdcf-c682-4aa1-8c42-1d1687d35801)
 
-From Grafana
+Figure: Evidence for Test Case 2
 
+- **TC-03**
 
+  ![TC-03](https://github.com/user-attachments/assets/7dba76e9-9154-4852-9e34-a32cba8153b3)
 
+ Figure: Evidence for Test Case 3
+ 
+- **TC-04**
 
-In conclusion, the results indicate that all tested functional and security requirements were met.
+![TC-04](https://github.com/user-attachments/assets/f49269f1-52ee-4ca5-88f3-83345b50a72d)
+
+  Figure: Evidence for Test Case 4
+  
+- **TC-05**
+
+  ![TC-05](https://github.com/user-attachments/assets/f78dd0d2-d8bd-455a-9a5d-d1623542cd0c)
+
+  Figure: Evidence for Test Case 5
+  
+- **TC-06**
+
+  ![TC-06](https://github.com/user-attachments/assets/76aba706-5bb7-449a-a56f-d66abf063249)
+
+ Figure: Evidence for Test Case 6
+
+- **TC-07**
+
+![TC-08](https://github.com/user-attachments/assets/aa12164a-1332-487d-b41c-38c2ab909756)
+
+  Figure: Evidence for Test Case 7
+  
+- **TC-08**
+  
+![Wrong_API_Key](https://github.com/user-attachments/assets/bbac3e79-c49f-4bc3-af3a-f1c660ede331)
+
+  Figure: Evidence for Test Case 8
+  
+- **TC-09, TC-10**
+
+  ![Grafana_Dashboard](https://github.com/user-attachments/assets/0a31b485-f059-4d50-9ea0-02b8942b2cfe)
+
+  Figure: Evidence for Test Case 10 and 11 1
+
+![TC-09](https://github.com/user-attachments/assets/6fddfa81-89e4-4273-825d-5b1b0a0cfe35)
+
+  Figure: Evidence for Test Case 10 and 11 2
+
 
 ---
 
@@ -79,6 +123,7 @@ Alert generation is rule-based and does not include advanced intrusion detection
 Temporary network disruptions may delay data updates or remote control actions.
 
 [Section 7: Conclusion and Future Work](/07_Conclusion_and_Future_Work/conclusion.md)
+
 
 
 
