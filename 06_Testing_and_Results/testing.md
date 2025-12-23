@@ -24,7 +24,7 @@ The following test cases in Section 7.2 are executed to test system behaviour.
 | TC-03       | Multiple invalid PIN attempts     | Enter wrong PIN repeatedly        | Alert event generated              | Alert published and logged                |
 | TC-04       | Valid RFID authentication         | Scan registered RFID card         | Door unlocks and status updated    | Door unlocked successfully                |
 | TC-05       | Invalid RFID authentication       | Scan unregistered RFID card       | Access denied                      | Access denied; no state change            |
-| TC-06       | MQTT status publish               | ESP32 publishes door status       | Message received by Node-RED       | Message received and processed, visualized in Grafana           |
+| TC-06       | MQTT status publish               | ESP32 publishes door status       | Message received by Node-RED       | Message received and processed            |
 | TC-07       | HTTP control with valid API key   | HTTP request with correct API key | Command accepted and executed      | Lock controlled successfully              |
 | TC-08       | HTTP control with invalid API key | HTTP request with wrong API key   | Request rejected                   | Request rejected                          |
 | TC-09       | Data logging                      | Door open/close events            | Data stored in database            | Data visible in dashboard                 |
@@ -123,6 +123,7 @@ Alert generation is rule-based and does not include advanced intrusion detection
 Temporary network disruptions may delay data updates or remote control actions.
 
 [Section 7: Conclusion and Future Work](/07_Conclusion_and_Future_Work/conclusion.md)
+
 
 
 
