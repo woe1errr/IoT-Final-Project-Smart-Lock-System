@@ -1,3 +1,5 @@
+[Click here to return to README](/README.md)
+
 # 1.0 Introduction
 
 ## 1.1 Background and Motivation
@@ -31,7 +33,8 @@ Upon completion of the project, the following outcomes are expected:
 
 ---
 
-_[Section 2: System Architecture](/02_System_Architecture/system_design.md)_
+_[Click here to return to Section 2: System Architecture](/02_System_Architecture/system_design.md)_
+
 
 
 
