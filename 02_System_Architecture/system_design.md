@@ -96,16 +96,49 @@ These measures collectively provide layered access control suitable for a protot
 
 The overall data flow of the system can be summarized as follows:
 
-1. User initiates authentication through RFID, keypad PIN entry, or mobile phone remote request.
-2. The ESP32 validates local authentication inputs or receives authorized remote control commands via the network layer.
-3. Door state changes and access events are published to the MQTT broker.
-4. Node-RED subscribes to relevant topics, processes incoming data, and stores records in InfluxDB.
-5. Real-time system status and historical data, including door unlock events and authentication methods, are recorded and visualized on the Grafana dashboard.
-6. Security mechanisms validate all network and application-level interactions before actuation occurs.
+1. **Authentication Request Initiation**  
+   The user initiates an access request via RFID, keypad PIN entry, or mobile phone remote control (user interaction at the perception or application layer).
+
+2. **Authentication Validation**  
+   The ESP32 validates RFID and keypad credentials locally (device-level authentication), while mobile requests are received by Node-RED and validated using an API key (application-level authentication).
+
+3. **Authorization and Lock Control**  
+   If authentication is successful, an authorized unlock command is generated and sent to the ESP32 either locally or via MQTT; otherwise, the request is rejected and logged (access control enforcement).
+
+4. **Door Actuation and Event Generation**  
+   The ESP32 actuates the relay to control the solenoid lock and monitors door state changes using the reed switch (physical actuation and sensing).
+
+5. **Data Transmission and Processing**  
+   Door status, lock status, authentication events, and alerts are published to the MQTT broker and processed by Node-RED (device-to-gateway communication).
+
+6. **Data Storage and Visualization**  
+   Processed events are stored in InfluxDB and visualized in real time on Grafana dashboards for monitoring and historical analysis (application-level data management).
+
+7. **Security Enforcement**  
+   Authentication and access control mechanisms are applied throughout the data flow to ensure that only authorized actions and messages are processed (end-to-end security).
 
 This structured data flow demonstrates complete end-to-end integration from sensing and actuation to data management and access control.
 
+**Text-Based Data Flow Diagram**
+
+User  
+→ (RFID / Keypad PIN)  
+→ ESP32 (Authentication + Actuation)  
+→ MQTT Publish (Door Status / Lock Status / Events)  
+→ Mosquitto MQTT Broker (Raspberry Pi)  
+→ Node-RED (Processing + Control Logic)  
+→ InfluxDB (Time-Series Storage)  
+→ Grafana Dashboard (Real-Time Visualization)
+
+Mobile Phone (iPhone Shortcuts)  
+→ HTTP Request + API Key  
+→ Node-RED (API Key Validation)  
+→ MQTT Control Command  
+→ ESP32 (Remote Unlock Execution)
+
+
 [Section 3: Implementation](/03_Implementation/implementation.md)
+
 
 
 
