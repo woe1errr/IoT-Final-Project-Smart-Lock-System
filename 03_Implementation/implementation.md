@@ -34,17 +34,443 @@ The core firmware modules include:
 - **Authentication Module:**  
   This module handles RFID tag verification and keypad-based PIN validation. Only the tag with the correct predefined UID and authenticated inputs are allowed to move on with the lock unlock logic.
 
+```
+const String correctPIN = "1234";
+const int PIN_length = 4;
+String correctUID[] = { "b0d95222" };
+
+loop() {
+  if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial()) {
+
+    cardActive = true;
+
+    String uidString = "";
+    for (byte i = 0; i < mfrc522.uid.size; i++) {
+      if (mfrc522.uid.uidByte[i] < 0x10) uidString += "0";
+      uidString += String(mfrc522.uid.uidByte[i], HEX);
+    }
+
+    Serial.print("RFID UID: ");
+    Serial.println(uidString);
+
+    bool authorized = false;
+    for (const auto& UID : correctUID) {
+      if (uidString == UID) {
+        authorized = true;
+        break;
+      }
+    }
+
+    if (authorized) {
+      unlockDoor("RFID");
+    } else {
+      displayError("Invalid Card");
+      sendLogToMQTT(false, "RFID", true);
+    }
+
+    mfrc522.PICC_HaltA();
+    mfrc522.PCD_StopCrypto1();
+  }
+
+char key = keypad.getKey();
+  if (key) {
+    Serial.println(key);
+    
+    // Clear input
+    if (key == '*') {
+      enteredPIN = "";
+      resetDisplay();
+      Serial.println("PIN cleared");
+      return;
+    }
+
+    // Submit PIN
+    if (key == '#') {
+      if (enteredPIN.length() == PIN_length) {
+        if (enteredPIN == correctPIN) {
+          Serial.println("Door unlocked");
+          unlockDoor("PIN");
+        } else {
+          Serial.println("Wrong PIN. Try again");
+          displayError("Wrong PIN");
+          sendLogToMQTT(false, "PIN", true);
+          failedAttempts += 1;
+
+          if (failedAttempts > 2) {
+            sendAlertToMQTT(
+              "Invalid PIN for " + String(failedAttempts) + " times"
+            );
+          }
+        }
+      } else {
+        Serial.println("PIN too short");
+        displayError("PIN too short");
+      }
+
+      enteredPIN = "";   // reset after submit
+      return;
+    }
+
+    if (enteredPIN.length() < PIN_length) {
+      enteredPIN += key;
+      displayPinNumber();
+      Serial.print("PIN so far: ");
+      for (int i = 0; i < enteredPIN.length(); i++) Serial.print("*");
+      Serial.println();
+    }
+  }
+}
+```
+
 - **Sensor Monitoring Module:**
   The magnetic reed switch constantly monitors the door's open or closed states and generates corresponding status updates.
+
+```
+int sensorState = 0;
+int lastSensorState = 0;
+
+loop() {
+  sensorState = digitalRead(REED_SENSOR_PIN);
+  if (sensorState != lastSensorState) {
+    if (sensorState == LOW) {
+      Serial.println("Door is Closed!");
+      sendReedToMQTT(false);
+      doorOpenTimerActive = 0;
+      digitalWrite(BUZZER_PIN, LOW);
+      doorOpenedTimedoutAlertSent = 0;
+    } else {
+      Serial.println("Sensor Opened!");
+      doorShouldLockMills = millis() + 1000;
+      doorLeftOpenedBeep = millis() + 5000;
+      doorOpenTimerActive = 1;
+      sendReedToMQTT(true);
+    }
+    lastSensorState = sensorState;
+  }
+}
+```
 
 - **Actuation Module:**  
   Controls the relay module to unlock or relock the solenoid door lock based on the authentication results and time escalation logic.
 
+```
+void unlockDoor(String method) {
+  digitalWrite(RELAY_PIN, HIGH);
+  doorShouldLockMills = millis() + 7000;
+  enteredPIN = "";
+  cardActive = false;
+  if (lockState == 0) {
+    lockState = 1;
+    failedAttempts = 0;
+    displayDoorUnlocked();
+    sendLockToMQTT(true);
+    if (method != "") {
+      sendLogToMQTT(true, method, true);
+    }
+  }
+}
+
+void lockDoor(String method) {
+  digitalWrite(RELAY_PIN, LOW);
+  lockState = 0;
+  cardActive = false;
+  resetDisplay();
+  sendLockToMQTT(false);
+  if (method != "") {
+    sendLogToMQTT(true, method, false);
+  }
+}
+```
+
 - **Buzzer Control Module:**  
   To generate audible alerts to attract user's attention when the door being open exceeds the allowed time threshold.
 
+```
+unsigned long doorLeftOpenedBeep = 0;
+int doorOpenTimerActive = 0;
+int doorOpenedTimedoutAlertSent = 0;
+
+bool deadlinePassed(unsigned long deadline) {
+  return (long)(millis() - deadline) >= 0;
+}
+
+loop() {
+  sensorState = digitalRead(REED_SENSOR_PIN);
+  if (sensorState != lastSensorState) {
+    if (sensorState == LOW) {
+      Serial.println("Door is Closed!");
+      sendReedToMQTT(false);
+      doorOpenTimerActive = 0;
+      digitalWrite(BUZZER_PIN, LOW);
+      doorOpenedTimedoutAlertSent = 0;
+    } else {
+      Serial.println("Sensor Opened!");
+      doorShouldLockMills = millis() + 1000;
+      doorLeftOpenedBeep = millis() + 5000;
+      doorOpenTimerActive = 1;
+      sendReedToMQTT(true);
+    }
+    lastSensorState = sensorState;
+  }
+
+  if (doorOpenTimerActive == 1 && deadlinePassed(doorLeftOpenedBeep)) {
+    digitalWrite(BUZZER_PIN, HIGH);
+    if (doorOpenedTimedoutAlertSent == 0) {
+      sendAlertToMQTT(
+          "Door Opened for More than 5 seconds"
+      );
+      doorOpenedTimedoutAlertSent = 1;
+    }
+  }
+}
+```
+
 - **Communication Module:**  
   Manages Wi-Fi connectivity, MQTT client initialization, message publishing for door status and access events, and subscription to control topics for authorized remote commands.
+
+```
+const char* ssid = "";
+const char* password = "";
+
+const char door_id[] = "door_1";
+
+const char MQTT_BROKER_ADRRESS[] = "172.20.10.3";
+const int MQTT_PORT = 1883;
+const char MQTT_CLIENT_ID[] = "door_1_esp";
+const char MQTT_USERNAME[] = "door_1";
+const char MQTT_PASSWORD[] = "r";
+
+const char SUBSCRIBE_TOPIC[] = "door_1/control";
+
+MFRC522DriverPinSimple ss_pin(5);
+MFRC522DriverPinSimple rst_pin(4);
+
+MFRC522DriverSPI driver{ss_pin}; // Create SPI driver
+MFRC522 mfrc522{driver};         // Create MFRC522 instance
+
+WiFiClient network;
+MQTTClient mqtt = MQTTClient(256);
+
+void ConnectedToAP_Handler(WiFiEvent_t wifi_event, WiFiEventInfo_t wifi_info) {
+  Serial.println("Connected To The WiFi Network");
+}
+ 
+void GotIP_Handler(WiFiEvent_t wifi_event, WiFiEventInfo_t wifi_info) {
+  Serial.print("Local ESP32 IP: ");
+  Serial.println(WiFi.localIP());
+}
+ 
+void WiFi_Disconnected_Handler(WiFiEvent_t wifi_event, WiFiEventInfo_t wifi_info) {
+  Serial.println("Disconnected From WiFi Network");
+  // Attempt Re-Connection
+  WiFi.begin(ssid, password);
+}
+
+void connectToMQTT() {
+  // Connect to the MQTT broker
+  mqtt.begin(MQTT_BROKER_ADRRESS, MQTT_PORT, network);
+
+  // Create a handler for incoming messages
+  mqtt.onMessage(messageHandler);
+
+  Serial.print("Connecting to MQTT broker");
+
+  while (!mqtt.connect(MQTT_CLIENT_ID, MQTT_USERNAME, MQTT_PASSWORD)) {
+    Serial.print(".");
+    delay(100);
+  }
+  Serial.println();
+
+  if (!mqtt.connected()) {
+    Serial.println("MQTT broker Timeout!");
+    return;
+  }
+
+  // Subscribe to a topic, the incoming messages are processed by messageHandler() function
+  if (mqtt.subscribe(SUBSCRIBE_TOPIC))
+    Serial.print("Subscribed to the topic: ");
+  else
+    Serial.print("Failed to subscribe to the topic: ");
+
+  Serial.println(SUBSCRIBE_TOPIC);
+  Serial.println("ESP32 - MQTT broker Connected!");
+}
+
+void messageHandler(String &topic, String &payload) {
+  Serial.println("ESP32 - received from MQTT:");
+  Serial.println("- topic: " + topic);
+  Serial.println("- payload:");
+  Serial.println(payload);
+
+  // Parse JSON
+  StaticJsonDocument<200> doc;
+  DeserializationError error = deserializeJson(doc, payload);
+
+  if (error) {
+    Serial.print("JSON parse failed: ");
+    Serial.println(error.c_str());
+    return;   // hard stop
+  }
+
+  // Validate field
+  if (!doc.containsKey("action")) {
+    Serial.println("Missing 'action' field");
+    return;
+  }
+
+  int action = doc["action"];
+
+  // Control logic
+  if (action == 1) {
+    Serial.println("MQTT ACTION: UNLOCK DOOR");
+    unlockDoor("");
+  } 
+  else if (action == 0) {
+    lockDoor("");
+  } else {
+    Serial.println("Invalid action value from MQTT");
+  }
+}
+
+
+void sendReedToMQTT(bool status) {
+  StaticJsonDocument<200> doc;
+  doc["status"]  = status ? "open" : "closed";
+  doc["door_id"] = door_id;
+
+  char payload[256];
+  size_t len = serializeJson(doc, payload, sizeof(payload));
+
+  if (len == 0) {
+    Serial.println("JSON serialization failed");
+    return;
+  }
+
+  const char* topic = "door_status";
+  bool ok = mqtt.publish(topic, payload, len);
+
+  if (!ok) {
+    Serial.println("MQTT publish failed");
+    return;
+  }
+
+  Serial.println("== MQTT publish successful ==");
+  Serial.print("Topic: ");
+  Serial.println(topic);
+  Serial.print("Payload: ");
+  Serial.println(payload);
+}
+
+void sendLockToMQTT(bool status) {
+  StaticJsonDocument<200> doc;
+  doc["status"]  = status ? "unlocked" : "locked";
+  doc["door_id"] = door_id;
+
+  char payload[256];
+  size_t len = serializeJson(doc, payload, sizeof(payload));
+
+  if (len == 0) {
+    Serial.println("JSON serialization failed");
+    return;
+  }
+
+  const char* topic = "lock_status";
+  bool ok = mqtt.publish(topic, payload, len);
+
+  if (!ok) {
+    Serial.println("MQTT publish failed");
+    return;
+  }
+
+  Serial.println("== MQTT publish successful ==");
+  Serial.print("Topic: ");
+  Serial.println(topic);
+  Serial.print("Payload: ");
+  Serial.println(payload);
+}
+
+void sendAlertToMQTT(String message) {
+  StaticJsonDocument<200> doc;
+  doc["message"]  = message;
+  doc["door_id"] = door_id;
+
+  char payload[256];
+  size_t len = serializeJson(doc, payload, sizeof(payload));
+
+  if (len == 0) {
+    Serial.println("JSON serialization failed");
+    return;
+  }
+
+  const char* topic = "alert";
+  bool ok = mqtt.publish(topic, payload, len);
+
+  if (!ok) {
+    Serial.println("MQTT publish failed");
+    return;
+  }
+
+  Serial.println("== MQTT publish successful ==");
+  Serial.print("Topic: ");
+  Serial.println(topic);
+  Serial.print("Payload: ");
+  Serial.println(payload);
+}
+
+void sendLogToMQTT(bool success, String method, bool action) {
+  StaticJsonDocument<200> doc;
+  doc["status"]  = success ? "success" : "failed";
+  doc["door_id"] = door_id;
+  doc["method"] = method;
+  doc["action"] = action ? "unlock" : "lock";
+
+  char payload[256];
+  size_t len = serializeJson(doc, payload, sizeof(payload));
+
+  if (len == 0) {
+    Serial.println("JSON serialization failed");
+    return;
+  }
+
+  const char* topic = "authentication_log";
+  bool ok = mqtt.publish(topic, payload, len);
+
+  if (!ok) {
+    Serial.println("MQTT publish failed");
+    return;
+  }
+
+  Serial.println("== MQTT publish successful ==");
+  Serial.print("Topic: ");
+  Serial.println(topic);
+  Serial.print("Payload: ");
+  Serial.println(payload);
+}
+
+void setup() {
+  WiFi.mode(WIFI_STA);
+  WiFi.onEvent(ConnectedToAP_Handler, ARDUINO_EVENT_WIFI_STA_CONNECTED);
+  WiFi.onEvent(GotIP_Handler, ARDUINO_EVENT_WIFI_STA_GOT_IP);
+  WiFi.onEvent(WiFi_Disconnected_Handler, ARDUINO_EVENT_WIFI_STA_DISCONNECTED);
+  WiFi.begin(ssid, password);
+  Serial.println("Connecting to WiFi Network ..");
+  connectToMQTT();
+}
+
+void loop() {
+  if (doorOpenTimerActive == 1 && deadlinePassed(doorLeftOpenedBeep)) {
+    digitalWrite(BUZZER_PIN, HIGH);
+    if (doorOpenedTimedoutAlertSent == 0) {
+      sendAlertToMQTT(
+          "Door Opened for More than 5 seconds"
+      );
+      doorOpenedTimedoutAlertSent = 1;
+    }
+  }
+
+  mqtt.loop();
+}
+```
 
 ---
 
@@ -81,6 +507,7 @@ Photographs of the physical prototype and wiring configuration, along with scree
 ---
 
 [Section 4: Networking Protocol](/04_Networking_Protocol/Protocol_Design_And_Data_Management.md)
+
 
 
 
