@@ -65,7 +65,11 @@ This prevents unauthorized MQTT clients from injecting false data or issuing con
    ![Incorrect_MQTT_Password](https://github.com/user-attachments/assets/2c39df3f-7c58-46c6-b76e-411352649709)
    *Figure: Wrong MQTT Password*
 
+---
+
+Overall, the implemented security mechanisms collectively protect the system at multiple layers: HTTP access is controlled through API keys, physical access is enforced through local authentication logic, and network communication is secured via authenticated MQTT sessions with topic restrictions. While advanced encryption mechanisms such as TLS are identified as future enhancements, the current implementation demonstrates a clear and functional understanding of IoT security principles suitable for a prototype level system.
 
 
 [Section 6: Testing and Results](/06_Testing_and_Results/testing.md)
+
 
