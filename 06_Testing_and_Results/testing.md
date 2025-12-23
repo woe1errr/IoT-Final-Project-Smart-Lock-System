@@ -1,4 +1,6 @@
-﻿# 6. Testing and Results
+_[Click here to return to Section 5: Security Implementation](/05_Security_Implementation/security.md)_
+
+ # 6.0 Testing and Results
 ---
 
 In this section, the results obtained from the testing procedures on the IoT Smart Lock System are presented, and the system's performance and limitations are discussed.
@@ -77,6 +79,7 @@ Alert generation is rule-based and does not include advanced intrusion detection
 Temporary network disruptions may delay data updates or remote control actions.
 
 [Section 7: Conclusion and Future Work](/07_Conclusion_and_Future_Work/conclusion.md)
+
 
 
 
