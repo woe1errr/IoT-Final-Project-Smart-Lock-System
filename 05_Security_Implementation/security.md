@@ -13,7 +13,7 @@ To secure HTTP-based control and query endpoints, an API key–based access cont
 
 ![API_Key_Env_Var](https://github.com/user-attachments/assets/27fb8e7f-9be7-4c6d-a70b-c9fa7f1cd5f5)
 
-_Figure: API Key in Environment Variable of Node-RED_
+_Figure 6: API Key in Environment Variable of Node-RED_
 
 
 When an HTTP request is received, Node-RED extracts the "Authorization" header and validates it against the stored API_KEY environment variable. Requests with missing or mismatched API keys are immediately rejected, and no control or data processing logic is executed. Only requests presenting a valid API key are allowed to proceed to downstream nodes.
@@ -22,7 +22,7 @@ On the client side, the mobile Shortcut application is configured to include the
 
 ![API_Key_Shortcut_App](https://github.com/user-attachments/assets/10fce34c-f678-410f-88c4-5445de3af01b)
 
-_Figure: API Key in Shortcut App_
+_Figure 7: API Key in Shortcut App_
 
 
 This mechanism effectively prevents unauthorized access to the HTTP interface, reduces exposure of critical control endpoints, and provides a simple yet effective access control layer suitable for a local IoT prototype deployment.
@@ -30,13 +30,17 @@ This mechanism effectively prevents unauthorized access to the HTTP interface, r
 **Evidence of Operation**
 1. Unauthorized HTTP requests without a valid API key return an error response.
    As from the image, if the incorrect API key is provided, the server will return "Invalid API Key" error message instead of the door status
+   
    ![Wrong_API_Key](https://github.com/user-attachments/assets/3d37ed0c-6783-45e4-8d74-daca074a0142)
-   *Figure: Error Response for Wrong API Key*
+   
+   *Figure 8: Error Response for Wrong API Key*
 
 3. Authorized requests with the correct API key successfully trigger control flows in Node-RED.
+4. 
    ![Valid_API_Key](https://github.com/user-attachments/assets/9932f34c-3b06-45a8-95da-42b697456382)
-  *Figure: Valid API Key Triggering Control Flow*
-
+   
+  *Figure 9: Valid API Key Triggering Control Flow*
+   
 ---
 
 ### **ii. Authentication Logic (PIN and RFID)**
@@ -48,19 +52,22 @@ To enhance security, incorrect authentication attempts are tracked, and repeated
 **Evidence of Operation**
 
 1. Correct PIN or RFID input results in successful unlock events.
+   
 ![Successful_PIN_RFID_Attempts](https://github.com/user-attachments/assets/20b29931-3233-4c4b-820e-e3eb7a24b5e7)
 
-*Figure: Successful Unlock Events for PIN and RFID Input*
+*Figure 10: Successful Unlock Events for PIN and RFID Input*
 
 2. Invalid credentials are rejected, with failed attempts logged.
+   
 ![Failed_Attempt_Logged](https://github.com/user-attachments/assets/52fb51c7-58dc-4495-b302-1d2391d5f66b)
 
-*Figure: Failed Attempts for RFID and PIN Logged*
+*Figure 11: Failed Attempts for RFID and PIN Logged*
    
 3. Alert messages are published when repeated authentication failures occur.
+   
 ![Repeated_Failed_Attempts](https://github.com/user-attachments/assets/8a7b328d-99c9-44ad-813f-7ccad71a4173)
 
-*Figure: Repeated Failed PIN Input Attempts Logged*
+*Figure 12: Repeated Failed PIN Input Attempts Logged*
 
 ---
 
@@ -71,11 +78,13 @@ This prevents unauthorized MQTT clients from injecting false data or issuing con
 
 **Evidence of Operation**
 1. MQTT clients without valid credentials are rejected by the broker.
+   
    ![Correct_MQTT_Password](https://github.com/user-attachments/assets/467b6b96-2b45-4915-9fd7-f9d597667690)
-   *Figure: Correct MQTT Password*
+   *Figure 13: Correct MQTT Password*
 
    ![Incorrect_MQTT_Password](https://github.com/user-attachments/assets/2c39df3f-7c58-46c6-b76e-411352649709)
-   *Figure: Wrong MQTT Password*
+   
+   *Figure 14: Wrong MQTT Password*
 
 ---
 
@@ -83,6 +92,7 @@ Overall, the implemented security mechanisms collectively protect the system at 
 
 
 [Section 6: Testing and Results](/06_Testing_and_Results/testing.md)
+
 
 
 
