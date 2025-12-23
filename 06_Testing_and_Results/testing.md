@@ -35,59 +35,59 @@ The following test cases in Section 7.2 are executed to test system behaviour.
 - **TC-01**
   
   ![TC-01](https://github.com/user-attachments/assets/e880777e-1802-4aa9-98f2-5a58f8b42430)
-  Figure: Evidence for Test Case 1
+  Figure 15: Evidence for Test Case 1
 
 - **TC-02**
   
 ![TC-02](https://github.com/user-attachments/assets/453ecdcf-c682-4aa1-8c42-1d1687d35801)
 
-Figure: Evidence for Test Case 2
+Figure 16: Evidence for Test Case 2
 
 - **TC-03**
 
   ![TC-03](https://github.com/user-attachments/assets/7dba76e9-9154-4852-9e34-a32cba8153b3)
 
- Figure: Evidence for Test Case 3
+ Figure 17: Evidence for Test Case 3
  
 - **TC-04**
 
 ![TC-04](https://github.com/user-attachments/assets/f49269f1-52ee-4ca5-88f3-83345b50a72d)
 
-  Figure: Evidence for Test Case 4
+  Figure 18: Evidence for Test Case 4
   
 - **TC-05**
 
   ![TC-05](https://github.com/user-attachments/assets/f78dd0d2-d8bd-455a-9a5d-d1623542cd0c)
 
-  Figure: Evidence for Test Case 5
+  Figure 19: Evidence for Test Case 5
   
 - **TC-06**
 
   ![TC-06](https://github.com/user-attachments/assets/76aba706-5bb7-449a-a56f-d66abf063249)
 
- Figure: Evidence for Test Case 6
+ Figure 20: Evidence for Test Case 6
 
 - **TC-07**
 
 ![TC-08](https://github.com/user-attachments/assets/aa12164a-1332-487d-b41c-38c2ab909756)
 
-  Figure: Evidence for Test Case 7
+  Figure 21: Evidence for Test Case 7
   
 - **TC-08**
   
 ![Wrong_API_Key](https://github.com/user-attachments/assets/bbac3e79-c49f-4bc3-af3a-f1c660ede331)
 
-  Figure: Evidence for Test Case 8
+  Figure 22: Evidence for Test Case 8
   
 - **TC-09, TC-10**
 
   ![Grafana_Dashboard](https://github.com/user-attachments/assets/0a31b485-f059-4d50-9ea0-02b8942b2cfe)
 
-  Figure: Evidence for Test Case 10 and 11 1
+  Figure 23: Evidence for Test Case 10 and 11 1
 
 ![TC-09](https://github.com/user-attachments/assets/6fddfa81-89e4-4273-825d-5b1b0a0cfe35)
 
-  Figure: Evidence for Test Case 10 and 11 2
+  Figure 24: Evidence for Test Case 10 and 11 2
 
 
 ---
@@ -123,6 +123,7 @@ Alert generation is rule-based and does not include advanced intrusion detection
 Temporary network disruptions may delay data updates or remote control actions.
 
 [Section 7: Conclusion and Future Work](/07_Conclusion_and_Future_Work/conclusion.md)
+
 
 
 
