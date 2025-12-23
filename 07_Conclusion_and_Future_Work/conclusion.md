@@ -11,15 +11,13 @@ The figure belows is the final prototype of the smart lock system
 *Figure: Front View of Final Prototype*
 
 
----
-
 ## 7.1 Key Findings
 
 Throughout the implementation, we have confirmed that lightweight protocols and local gateways are well-suited for smart home security applications. MQTT has enabled low-latency and reliable communication between the ESP32 device and the Node-RED gateway, while HTTP has successfully provided a simple interface for user interaction through a mobile Shortcut application and for dashboard viewing. With the use of a local time-series database and Grafana dashboard, effective real-time monitoring and historical analysis of door activity and alert events were allowed.
 
 From a security perspective, the combination of device-level authentication (PIN and RFID), API key validation for HTTP endpoints, and authenticated MQTT communication provided a basic layered access control approach. 
 
---- 
+
 
 ## 7.2 Reflections on Challenges
 
@@ -31,7 +29,7 @@ The use of Node-RED also presented a learning challenge, as it was a new develop
 
 Despite these challenges, systematic debugging, incremental testing, and increased familiarity with the tools allowed the issues to be resolved successfully. The experience highlighted the importance of careful hardware wiring, structured data design, and thorough understanding of middleware tools in IoT system development.
 
----
+
 
 ## 7.3 Future Work and Enhancements
 
@@ -60,6 +58,7 @@ While the current system prototype meets the project objectives, several enhance
   - Add offline buffering or retry mechanisms to handle temporary network disruptions.
 
 [Click here to return to README](/README.md)
+
 
 
 
