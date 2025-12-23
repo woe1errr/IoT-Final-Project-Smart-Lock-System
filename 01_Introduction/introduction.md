@@ -1,12 +1,14 @@
-# 1. Introduction
+# 1.0 Introduction
 
 ## 1.1 Background and Motivation
 
-Access control systems are also important in providing safety and security within residential and common areas like offices, storage rooms, lockers and campuses. In the old mechanical types of lock, the physical keys are used and this correlates to the fact that one may easily lose such keys, forget, duplicate or steal. These shortcomings don’t only minimize convenience but also present a great deal of security hazard. Although there are new tools that have been proposed as alternatives to the use of digital locks, a large number of the available options rely on one form of individual authentication, like a Personal Identification Number (PIN) or an access card and are susceptible to unauthorized access in case of credentials theft.
+Access control systems play a critical role in ensuring safety and security in residential environments and shared spaces such as offices, storage rooms, lockers, and campuses. Traditional mechanical lock systems rely on physical keys, which are prone to loss, duplication, theft, and unauthorized copying. These limitations not only reduce user convenience but also introduce significant security risks, as lost or duplicated keys can be exploited without detection.
 
-In this case, access control systems may be improved with the development of Internet of Thins (IoT) technologies, which are connected, automated and monitored in real time. IoT allows combining various authentication techniques in one system and providing the ability to manage remotely, recordings and warning systems. Using physical devices to be linked to a networked application layer enables users to be more aware of the events of access and have a greater level of control over the events, enhancing security and usability.
+Although digital locking solutions have been introduced as alternatives, many existing systems rely on a single authentication method, such as a Personal Identification Number (PIN) or an access card. Such single-factor authentication mechanisms still poses vulnerabilities that can potentially allow unauthorized access if credentials are compromised. Furthermore, most traditional lock systems lack real-time access monitoring and alerting capabilities, limiting user awareness and control over access events.
 
-Due to these constraints, this project aims to create an IoT-driven smart lock system, which would allow the integration of multiple ways to unlock the door and real-time monitoring and user alerting. The desired system will enhance security, flexibility, and convenience through hardware-based authentication and networked data management as well as security measures.
+Advancements in Internet of Things (IoT) technologies provide an opportunity to enhance access control systems by enabling connectivity, automation, and real-time monitoring. IoT-based systems allow multiple authentication methods to be integrated into a single platform, while also supporting remote management, access logging, and alert notifications. By connecting physical access devices to a networked application layer, users can gain greater visibility into access activities and exercise improved control, hence enhancing both security and usability.
+
+To overcome these challenges, this project aims to develop an IoT-driven smart lock system that integrates multiple authentication methods, including hardware-based access mechanisms and remote control, with real-time monitoring and user alerting. The proposed system is designed to improve security, flexibility, and convenience through the combination of embedded hardware, networked data management, and basic security controls.
 
 ---
 
@@ -32,6 +34,7 @@ Upon completion of the project, the following outcomes are expected:
 ---
 
 _[Section 2: System Architecture](/02_System_Architecture/system_design.md)_
+
 
 
 
