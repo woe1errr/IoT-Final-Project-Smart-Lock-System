@@ -80,6 +80,7 @@ This prevents unauthorized MQTT clients from injecting false data or issuing con
 1. MQTT clients without valid credentials are rejected by the broker.
    
    ![Correct_MQTT_Password](https://github.com/user-attachments/assets/467b6b96-2b45-4915-9fd7-f9d597667690)
+   
    *Figure 13: Correct MQTT Password*
 
    ![Incorrect_MQTT_Password](https://github.com/user-attachments/assets/2c39df3f-7c58-46c6-b76e-411352649709)
@@ -92,6 +93,7 @@ Overall, the implemented security mechanisms collectively protect the system at 
 
 
 [Section 6: Testing and Results](/06_Testing_and_Results/testing.md)
+
 
 
 
