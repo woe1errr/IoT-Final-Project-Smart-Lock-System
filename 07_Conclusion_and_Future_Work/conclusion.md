@@ -4,6 +4,13 @@
 
 In conclusion, this project has successfully designed and implemented a functional IoT-based Smart Lock System that integrates device-level sensing and actuation, network communication, data management, and basic security mechanisms. The system demonstrated end-to-end operation, from local authentication at the ESP32 device to real-time data visualization and remote control through a secured backend infrastructure.
 
+The figure belows is the final prototype of the smart lock system
+
+![Front_View_of_Prototype](https://github.com/user-attachments/assets/64a8fffe-d5a8-48d7-9a4a-1ec00b92fc75)
+
+*Figure: Front View of Final Prototype*
+
+
 ---
 
 ## 7.1 Key Findings
@@ -53,5 +60,6 @@ While the current system prototype meets the project objectives, several enhance
   - Add offline buffering or retry mechanisms to handle temporary network disruptions.
 
 [Click here to return to README](/README.md)
+
 
 
