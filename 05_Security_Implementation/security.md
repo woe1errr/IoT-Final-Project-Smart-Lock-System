@@ -35,8 +35,8 @@ This mechanism effectively prevents unauthorized access to the HTTP interface, r
    
    *Figure 8: Error Response for Wrong API Key*
 
-3. Authorized requests with the correct API key successfully trigger control flows in Node-RED.
-4. 
+2. Authorized requests with the correct API key successfully trigger control flows in Node-RED.
+ 
    ![Valid_API_Key](https://github.com/user-attachments/assets/9932f34c-3b06-45a8-95da-42b697456382)
    
   *Figure 9: Valid API Key Triggering Control Flow*
@@ -92,6 +92,7 @@ Overall, the implemented security mechanisms collectively protect the system at 
 
 
 [Section 6: Testing and Results](/06_Testing_and_Results/testing.md)
+
 
 
 
