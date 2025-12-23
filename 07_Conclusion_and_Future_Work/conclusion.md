@@ -1,4 +1,6 @@
-﻿# 7. Conclusion and Future Work
+
+ 
+ # 7.0 Conclusion and Future Work
 
 ---
 
@@ -58,6 +60,7 @@ While the current system prototype meets the project objectives, several enhance
   - Add offline buffering or retry mechanisms to handle temporary network disruptions.
 
 [Click here to return to README](/README.md)
+
 
 
 
