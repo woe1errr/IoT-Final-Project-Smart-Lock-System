@@ -1,3 +1,5 @@
+_[Click here to return to Section 2: System Architecture](/02_System_Architecture/system_design.md)_
+
 # 3. Implementation Details
 
 ## 3.1 Hardware Implementation and Circuit Connections
@@ -510,6 +512,7 @@ Photographs of the physical prototype and wiring configuration, along with scree
 ---
 
 [Section 4: Networking Protocol](/04_Networking_Protocol/Protocol_Design_And_Data_Management.md)
+
 
 
 
