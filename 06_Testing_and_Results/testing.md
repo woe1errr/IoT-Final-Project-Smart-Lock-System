@@ -83,11 +83,11 @@ Figure 16: Evidence for Test Case 2
 
   ![Grafana_Dashboard](https://github.com/user-attachments/assets/0a31b485-f059-4d50-9ea0-02b8942b2cfe)
 
-  Figure 23: Evidence for Test Case 10 and 11 1
+  Figure 23: Evidence for Test Case 10 and 11_1
 
 ![TC-09](https://github.com/user-attachments/assets/6fddfa81-89e4-4273-825d-5b1b0a0cfe35)
 
-  Figure 24: Evidence for Test Case 10 and 11 2
+  Figure 24: Evidence for Test Case 10 and 11_2
 
 
 ---
@@ -123,6 +123,7 @@ Alert generation is rule-based and does not include advanced intrusion detection
 Temporary network disruptions may delay data updates or remote control actions.
 
 [Section 7: Conclusion and Future Work](/07_Conclusion_and_Future_Work/conclusion.md)
+
 
 
 
